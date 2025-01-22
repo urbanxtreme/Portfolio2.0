@@ -351,12 +351,14 @@ nav {
 
 .typewriter {
   overflow: hidden;
-  border-right: 2px solid var(--primary-color);
   white-space: nowrap;
   margin: 0 auto;
+  border-right: 2px solid var(--primary-color); /* Initial border for animation */
   animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+  animation-fill-mode: forwards; /* Ensure the final state is retained */
 }
 
+/* Typing animation */
 @keyframes typing {
   from {
     width: 0;
@@ -366,15 +368,22 @@ nav {
   }
 }
 
+/* Blinking caret animation */
 @keyframes blink-caret {
-  from,
-  to {
+  from, to {
     border-color: transparent;
   }
   50% {
     border-color: var(--primary-color);
   }
 }
+
+/* Remove border after typing animation */
+.typewriter-done {
+  border-right: none; /* Removes the border completely */
+  animation: none; /* Stops blinking */
+}
+
 
 /* Button Styles */
 .btn {
